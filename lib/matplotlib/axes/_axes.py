@@ -2967,7 +2967,7 @@ class Axes(_AxesBase):
 
         return errorbar_container  # (l0, caplines, barcols)
 
-    @unpack_labeled_data()
+    @unpack_labeled_data(label_namer=None)
     def boxplot(self, x, notch=None, sym=None, vert=None, whis=None,
                 positions=None, widths=None, patch_artist=None,
                 bootstrap=None, usermedians=None, conf_intervals=None,
@@ -3253,7 +3253,6 @@ class Axes(_AxesBase):
                            manage_xticks=manage_xticks)
         return artists
 
-    @unpack_labeled_data()
     def bxp(self, bxpstats, positions=None, widths=None, vert=True,
             patch_artist=False, shownotches=False, showmeans=False,
             showcaps=True, showbox=True, showfliers=True,
@@ -3638,7 +3637,8 @@ class Axes(_AxesBase):
         return dict(whiskers=whiskers, caps=caps, boxes=boxes,
                     medians=medians, fliers=fliers, means=means)
 
-    @unpack_labeled_data()
+    @unpack_labeled_data(replace_names=["x", "y", "s", "c", "linewidths", "edgecolors",
+                                        'facecolor']) # alias for c
     @docstring.dedent_interpd
     def scatter(self, x, y, s=20, c=None, marker='o', cmap=None, norm=None,
                 vmin=None, vmax=None, alpha=None, linewidths=None,
@@ -3846,7 +3846,7 @@ class Axes(_AxesBase):
 
         return collection
 
-    @unpack_labeled_data()
+    @unpack_labeled_data(replace_names=["x", "y"])
     @docstring.dedent_interpd
     def hexbin(self, x, y, C=None, gridsize=100, bins=None,
                xscale='linear', yscale='linear', extent=None,
