@@ -238,10 +238,12 @@ def test_function_call_replace_all():
         func_varags_replace_all(None, "a", "b", w="x", label="", data=data),
         "x: [1, 2], y: [8, 9], ls: x, w: xyz, label: ")
     assert_equal(
-        func_varags_replace_all(None, "a", "b", w="x", label="text", data=data),
+        func_varags_replace_all(None, "a", "b", w="x", label="text",
+                                data=data),
         "x: [1, 2], y: [8, 9], ls: x, w: xyz, label: text")
     assert_equal(
-        func_varags_replace_all(None, x="a", y="b", w="x", label="", data=data),
+        func_varags_replace_all(None, x="a", y="b", w="x", label="",
+                                data=data),
         "x: [1, 2], y: [8, 9], ls: x, w: xyz, label: ")
     assert_equal(
         func_varags_replace_all(None, x="a", y="b", w="x", label="text",

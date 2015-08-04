@@ -1825,7 +1825,8 @@ class Axes(_AxesBase):
 
     @unpack_labeled_data(replace_names=["left", "height", "width", "bottom",
                                         "color", "edgecolor", "linewidth",
-                                        "tick_label", "xerr", "yerr", "ecolor"],
+                                        "tick_label", "xerr", "yerr",
+                                        "ecolor"],
                          label_namer=None)
     @docstring.dedent_interpd
     def bar(self, left, height, width=0.8, bottom=None, **kwargs):
