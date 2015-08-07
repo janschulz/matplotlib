@@ -15,7 +15,7 @@ from numpy import ma
 import matplotlib
 
 from matplotlib import cbook
-from matplotlib.cbook import _string_to_bool
+from matplotlib.cbook import _string_to_bool, iterable, get_index_y, get_label
 from matplotlib import docstring
 import matplotlib.colors as mcolors
 import matplotlib.lines as mlines
@@ -31,7 +31,6 @@ import matplotlib.text as mtext
 import matplotlib.image as mimage
 from matplotlib.offsetbox import OffsetBox
 from matplotlib.artist import allow_rasterization
-from matplotlib.cbook import iterable, get_index_y
 
 rcParams = matplotlib.rcParams
 
@@ -276,6 +275,9 @@ class _process_plot_var_args(object):
                         (linestyle, marker, color)):
             if v is not None:
                 kw[k] = v
+
+        if 'label' not in kwargs or kwargs['label'] is None:
+            kwargs['label'] = get_label(tup[-1])
 
         if len(tup) == 2:
             x = np.atleast_1d(tup[0])
